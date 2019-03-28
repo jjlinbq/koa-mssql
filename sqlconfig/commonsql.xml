@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<commands xmlns="http://schemas.bingosoft.net/netframework/sqlcommand">
+  <command key="CommonSql.Role.OrgExistsRoleInUser">
+    <![CDATA[
+        select * from SEC_User where 1=1
+        {? and Id=@UserId }
+        {? and Name like '%'+@Name+'%'}
+        {? and LoginId like '%'+@LoginId+'%'}
+    ]]>
+  </command>
+    <command key="CommonSql.Role.OrgExistsRoleInUsers">
+    <![CDATA[
+        SELECT COUNT(1)
+        FROM SEC_UserRole AS ur 
+        INNER JOIN sec_wf_role wf on wf.id=ur.roleid
+        INNER JOIN sec_role AS sr ON wf.roleid = sr.Id
+        WHERE CAST(ur.UserID as varchar(50))=UPPER(@UserId) 
+        AND sr.Name=@RoleName
+    ]]>
+  </command>
+</commands>

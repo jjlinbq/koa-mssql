@@ -1,0 +1,32 @@
+<table>
+    <thead>
+    <th>ID</th>
+    <th>FNAME</th>
+    <th>LNAME</th>
+    <th>Role</th>
+    <th>EMAIL</th>
+    <th>STATUS</th>
+    <th>PHONE</th>
+    <th>REGESTRED ON</th>
+    <th>LAST UPDATE</th>
+    </thead>
+    <tbody>
+
+    <% users.forEach( function (user) { %>
+    <tr>
+        <td><%=user.attributes.id%></td>
+        <td><%=user.attributes.firstname%></td>
+        <td><%=user.attributes.lastname%></td>
+        <td><%=user.attributes.role%></td>
+        <td><%=user.attributes.email%></td>
+        <td><%=user.attributes.status%></td>
+        <td><%=user.attributes.phone%></td>
+        <td><%=user.attributes.created_at%></td>
+        <td><%=user.attributes.updated_at%></td>
+    </tr>
+    <% }) %>
+
+
+    </tbody>
+</table>
+    

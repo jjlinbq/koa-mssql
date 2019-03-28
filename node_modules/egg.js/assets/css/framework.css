@@ -1,0 +1,56 @@
+* {
+    font-family: monospace;
+    color: #222;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+footer {
+    bottom: 0;
+    position: fixed;
+    background: #e7e7e7;
+    float: left;
+    width: 100%;
+}
+.left {
+    float: right;
+}
+.inner {
+    padding: 5px 20px;
+}
+.right {
+    float: left;
+}
+.body {
+    float: left;
+    width: 100%;
+
+}
+.big-txt {
+    font-size: 90px;
+}
+.c-txt {
+    display: inline-block;
+    float: left;
+    padding-left: 5px;
+    line-height: 32px;
+}
+.ver-txt {
+    line-height: 32px;
+}
+.logo-f {
+    float: left;
+}
+
+footer p {
+    padding: 0;
+    margin: 0;
+}
+.txt-404 {
+
+    margin-top: 15%;
+}
+.txt-center {
+    text-align: center;
+}

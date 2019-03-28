@@ -1,0 +1,26 @@
+{"OA":{
+    "user":"sa",
+    "password":"a.123456",
+    "server":"10.4.178.90",
+    "database":"XMMetroOA",
+    "options":{
+        "encrypt":true
+    }
+},"UUV":{
+        "user":"sa",
+        "password":"a.123456",
+        "server":"10.4.178.90",
+        "database":"XMMetroUUV",
+        "options":{
+            "encrypt":true
+        }
+    },"Portal":{
+        "user":"sa",
+        "password":"a.123456",
+        "server":"10.4.178.90",
+        "database":"XMMetroPortal",
+        "options":{
+            "encrypt":true
+        }
+    }
+}

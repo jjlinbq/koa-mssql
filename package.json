@@ -1,0 +1,35 @@
+{
+  "name": "view-koa",
+  "version": "1.0.0",
+  "description": "koa test",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+   "repository": {    
+    "type": "git",
+    "url": "https://github.com/jjlinbq/koa-mssql"
+  },
+  "keywords": [
+    "12"
+  ],
+  "author": "jjlin",
+  "license": "ISC",
+  "dependencies": {
+    "egg.js": "^1.0.0",
+    "fs": "0.0.1-security",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^3.2.0",
+    "koa-onerror": "^4.1.0",
+    "koa-router": "^7.4.0",
+    "koa-views": "^6.1.5",
+    "log4js": "^4.1.0",
+    "mssql": "^5.0.3",
+    "nunjucks": "^3.2.0",
+    "path": "^0.12.7",
+    "silly-datetime": "^0.1.2",
+    "xml2js": "^0.4.19"
+  }
+}

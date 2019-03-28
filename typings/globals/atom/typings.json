@@ -1,0 +1,83 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/types/env-atom/7582c188a2567744ea471e352e650c4f0ea3259a/typings.json",
+    "raw": "registry:env/atom#1.6.0+20160723033700",
+    "main": "dist/atom.d.ts",
+    "global": true,
+    "dependencies": {
+      "atom-keymap": {
+        "src": "https://raw.githubusercontent.com/typed-typings/npm-atom-keymap/d15fe03e94c1b2f5f77d0f6f1496175a8636d778/typings.json",
+        "raw": "registry:npm/atom-keymap#6.3.2+20160601230841",
+        "main": "lib/keymap-manager.d.ts",
+        "version": "6.3.2",
+        "dependencies": {
+          "event-kit": {
+            "src": "https://raw.githubusercontent.com/typed-typings/npm-event-kit/6b7089b288313f8e9a4cc79bd5c3776a6fcb9647/typings.json",
+            "raw": "registry:npm/event-kit#2.0.0+20160531182013",
+            "main": "lib/event-kit.d.ts",
+            "version": "2.0.0",
+            "name": "event-kit"
+          }
+        },
+        "name": "atom-keymap"
+      },
+      "event-kit": {
+        "src": "https://raw.githubusercontent.com/typed-typings/npm-event-kit/3ad17c029eb8899b613cdf8229964e67fb19cef7/typings.json",
+        "raw": "registry:npm/event-kit#2.0.0+20160601195915",
+        "main": "lib/event-kit.d.ts",
+        "version": "2.0.0",
+        "name": "event-kit"
+      },
+      "first-mate": {
+        "src": "https://raw.githubusercontent.com/typed-typings/npm-first-mate/0e9e3631d2a42c97d6d720ac549a10ae9ba68117/typings.json",
+        "raw": "registry:npm/first-mate#5.1.1+20160602000010",
+        "main": "lib/first-mate.d.ts",
+        "version": "5.1.1",
+        "dependencies": {
+          "event-kit": {
+            "src": "https://raw.githubusercontent.com/typed-typings/npm-event-kit/3ad17c029eb8899b613cdf8229964e67fb19cef7/typings.json",
+            "raw": "registry:npm/event-kit#2.0.0+20160601195915",
+            "main": "lib/event-kit.d.ts",
+            "version": "2.0.0",
+            "name": "event-kit"
+          }
+        },
+        "name": "first-mate"
+      },
+      "pathwatcher": {
+        "src": "https://raw.githubusercontent.com/typed-typings/npm-pathwatcher/a40728b979faadbd2a9f9a3fe472d9350a06bf81/typings.json",
+        "raw": "registry:npm/pathwatcher#6.5.0+20160601231600",
+        "main": "lib/main.d.ts",
+        "version": "6.5.0",
+        "dependencies": {
+          "event-kit": {
+            "src": "https://raw.githubusercontent.com/typed-typings/npm-event-kit/3ad17c029eb8899b613cdf8229964e67fb19cef7/typings.json",
+            "raw": "registry:npm/event-kit#2.0.0+20160601195915",
+            "main": "lib/event-kit.d.ts",
+            "version": "2.0.0",
+            "name": "event-kit"
+          }
+        },
+        "name": "pathwatcher"
+      },
+      "text-buffer": {
+        "src": "https://raw.githubusercontent.com/typed-typings/npm-text-buffer/5f6832aa04fc0f0634c216a9d0a88c3701a7e8fd/typings.json",
+        "raw": "registry:npm/text-buffer#9.1.0+20160602000024",
+        "main": "lib/text-buffer.d.ts",
+        "version": "9.1.0",
+        "dependencies": {
+          "event-kit": {
+            "src": "https://raw.githubusercontent.com/typed-typings/npm-event-kit/6b7089b288313f8e9a4cc79bd5c3776a6fcb9647/typings.json",
+            "raw": "registry:npm/event-kit#2.0.0+20160531182013",
+            "main": "lib/event-kit.d.ts",
+            "version": "2.0.0",
+            "name": "event-kit"
+          }
+        },
+        "name": "text-buffer"
+      }
+    },
+    "name": "atom"
+  }
+}
