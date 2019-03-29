@@ -23,9 +23,10 @@ var fn_login = async(ctx, next) => {
         });
         var sqlget = require("../sqlconfig/sqlget");
         await sqlget("CommonSql.Role.OrgExistsRoleInUser",(sqls)=>{
-            var sql = require("../mssqlInit/sqldb");
+
+          var sql = require("../mssqlInit/sqldb");
             sql.connectDB("Portal",()=>{
-            sql.querySql(sqls,{"LoginId":"zeng"},(err,result)=>{
+            sql.querySql(sqls,{"LoginId":"zengjh"},(err,result)=>{
                 console.log(result.recordset);
             });
          })

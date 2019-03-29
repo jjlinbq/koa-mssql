@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js"
   },
-   "repository": {    
+  "repository": {
     "type": "git",
     "url": "https://github.com/jjlinbq/koa-mssql"
   },
@@ -29,6 +29,7 @@
     "mssql": "^5.0.3",
     "nunjucks": "^3.2.0",
     "path": "^0.12.7",
+    "redis": "^2.8.0",
     "silly-datetime": "^0.1.2",
     "xml2js": "^0.4.19"
   }
