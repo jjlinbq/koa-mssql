@@ -16,6 +16,7 @@
   "author": "jjlin",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.6.2",
     "egg.js": "^1.0.0",
     "fs": "0.0.1-security",
     "koa": "^2.7.0",
