@@ -1,4 +1,5 @@
-{"OA":{
+{
+    "OA":{
     "user":"sa",
     "password":"a.123456",
     "server":"10.4.178.90",
@@ -6,7 +7,8 @@
     "options":{
         "encrypt":true
     }
-},"UUV":{
+},
+    "UUV":{
         "user":"sa",
         "password":"a.123456",
         "server":"10.4.178.90",
@@ -14,7 +16,8 @@
         "options":{
             "encrypt":true
         }
-    },"Portal":{
+    },
+    "Portal":{
         "user":"sa",
         "password":"a.123456",
         "server":"10.4.178.90",

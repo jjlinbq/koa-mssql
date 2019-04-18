@@ -18,33 +18,15 @@ var fn_signin = async(ctx,next)=>{
     }
 }
 var fn_login = async(ctx, next) => {
-    var sqlget = require("../sqlconfig/sqlget");
     var sql = require("../mssqlInit/sqldb");
-    var Async = require('async');
-    var res = await new Promise((resolve, reject)=>{
-        Async.waterfall([
-            function(callback){
-                sqlget("CommonSql.Role.OrgExistsRoleInUser",(sqls)=>{
-                    callback(null,sqls)
-                });   
-            },
-            function(sqls,callback){
-                sql.connectDB("Portal",()=>{
-                    callback(null,sqls)
-                });
-            },
-            function(sqls,callback){
-                sql.querySql(sqls,{"LoginId":"zengjh"},(err,result)=>{
-                   // console.dir(result.recordset);
-                    resolve(result);
-                });
-            }
-        ]);
-    }); 
-    await ctx.render('index', {
-        name: 'Welcome',
-        content:res.recordset
-    }); 
+    var res = await sql.connectDB("Portal");
+    if(res.status==1){
+        var result =await sql.querySql("CommonSql.Role.OrgExistsRoleInUser",{"LoginId":"zengjh"});
+        await ctx.render('index', {
+            name: 'Welcome',
+            content:result.recordset
+        }); 
+    }
 }
 module.exports = {
     'GET /': fn_index,

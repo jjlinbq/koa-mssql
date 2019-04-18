@@ -4,25 +4,28 @@
 const mssql = require("mssql");
 const conf = require("./sqlconfig.json");
 const loggers = require("../logconfig/logger");
+const sqlget = require("../sqlconfig/sqlget");
 let con = null;
 let restoreDefaults = function () {
     conf;
 };
-let connectDB = async(dbname,callBack) => {
-   con = new mssql.ConnectionPool(conf[dbname]);
-   await con.on('error', err => {
-    if (err) {
-        loggers.logerror('sql connect on error!',JSON.stringify(err));
-        throw err;
-    }
-    });
-    await con.connect(err => {
-        if (err) {
-            loggers.logerror('sql connect error!',JSON.stringify(err));
-            console.error(err);
-        }else{
-            callBack();
-        }
+let connectDB = async(dbname) => {
+    con = new mssql.ConnectionPool(conf[dbname]);
+    return await new Promise((resolve,reject)=>{
+        con.on('error', err => {
+            if (err) {
+                loggers.logerror('sql connect on error!',JSON.stringify(err));
+                reject(err);
+            }
+        });
+        con.connect(err => {
+            if (err) {
+                loggers.logerror('sql connect error!',JSON.stringify(err));
+                reject(err);
+            }else{
+                resolve({"status":1});
+            }
+        });
     });
 }
 let filterSql = (sql,index)=>{
@@ -32,31 +35,47 @@ let filterSql = (sql,index)=>{
     var alrtsql = matchsql.replace('{?','').replace('}','');
     return sql.replace(matchsql,alrtsql);
 }
-let querySql = async(sql, params, callBack)=> {
+let querySql = async(sqlname, params)=> {
     try{
-        let ps = new mssql.PreparedStatement(con);
-        if (params != ""&&params!=null&&params.length!=0) {
-            for (var index in params) {
-                sql = filterSql(sql,index);
-                if (typeof params[index] == "number") {
-                    ps.input(index, mssql.Int);
-                } else if (typeof params[index] == "string") {
-                    ps.input(index, mssql.NVarChar);
-                }
-            }
+        if(con==null){
+            await connectDB("OA");//默认连接oa
         }
-        sql = sql.replace(/{\?(.*?)}/g,'');
-        ps.prepare(sql, err => {
-            if (err)
-                console.log(err);
-            ps.execute(params, (err, recordset) => {
-                callBack(err, recordset);
-                ps.unprepare(err => {
-                    if (err)
-                        console.log(err);
-                });
-            });
+        let ps = new mssql.PreparedStatement(con);
+        return await new Promise((resolve,reject)=>{
+            var ASync = require("async");
+            ASync.waterfall([
+                (callback)=>{
+                    sqlget(sqlname,(sql)=>{
+                        if (params != ""&&params!=null&&params.length!=0) {
+                            for (var index in params) {
+                                sql = filterSql(sql,index);
+                                if (typeof params[index] == "number") {
+                                    ps.input(index, mssql.Int);
+                                } else if (typeof params[index] == "string") {
+                                    ps.input(index, mssql.NVarChar);
+                                }
+                            }
+                        }
+                        sql = sql.replace(/{\?(.*?)}/g,'');
+                        callback(null,sql,params);
+                    });
+                },
+                (sql,params,callback)=>{
+                    ps.prepare(sql, err => {
+                        if (err)
+                            reject(err);
+                        callback(null,params);
+                    });
+                },(params,callback)=>{
+                    ps.execute(params, (err, recordset) => {
+                        if(err)
+                            reject(err);
+                        resolve(recordset);
+                    });
+                }
+            ]);
         });
+
     }catch(err){
         loggers.logerror('sql error!',JSON.stringify(err));
         console.error('SQL error', err);
